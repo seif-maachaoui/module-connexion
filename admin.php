@@ -41,9 +41,9 @@
 
                     // Afficher les informations des utilisateurs
                     echo "<h1>Administration</h1>";
-                    echo "<table>";
+                    echo "<table border>";
                     echo "<tr>";
-                    echo "<th>Nom d'utilisateur</th>";
+                    echo "<th>Pseudo</th>";
                     echo "<th>Prénom</th>";
                     echo "<th>Nom</th>";
                     echo "</tr>";
