@@ -25,10 +25,10 @@
                 <h1>Bienvenue sur le module de connexion !</h1>
                 <article>
                     <p>Vous êtes déjà membre ?</p>
-                    <a href='connexion.php'>Se connecter</a>
+                    <button><a href='connexion.php'>Se connecter</a></button>
                     
                     <p>Vous êtes nouveau ici ?</p>
-                    <a href='inscription.php'>S'inscrire</a>
+                    <button><a href='inscription.php'>S'inscrire</a></button>
                 </article>
             </section>
 

@@ -58,8 +58,8 @@
                         echo "</tr>";
                         
                         $count++;
-                        if ($count >= 10) {
-                            break; // Arrêter la boucle après 10 lignes
+                        if ($count >= 20) {
+                            break; // Arrêter la boucle après 20 lignes
                         }
                     }
                 
