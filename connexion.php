@@ -22,30 +22,38 @@
             </header>
 
             <section>
+                <!-- Le formulaire de connexion -->
                 <form action="traitement-connexion.php" method="post">
-                <h1>Se connecter</h1>
+                    <h1>Se connecter</h1>
 
-                <label for="username">Login :</label>
-                <input type="text" name="login" id="login" placeholder="Login*" required="required">
+                    <label for="username">Login :</label>
+                    <input type="text" name="login" id="login" placeholder="Login*" required="required">
 
-                <label for="password">Password :</label>
-                <input type="password" name="password" id="password" placeholder="Password*" required="required">
-                <?php
-                    session_start();
+                    <label for="password">Password :</label>
+                    <input type="password" name="password" id="password" placeholder="Password*" required="required">
 
-                    if (isset($_SESSION['error'])) {
-                        echo "<span style='color: red;'>".$_SESSION['error']."</span><br>";
-                        unset($_SESSION['error']);
-                    }
-                ?>
-                <input class="button" type="submit" name="submit" value='Connexion'>
+                    <?php
+                        session_start();
+
+                        // Indique que les identifiants sont invalides
+                        if (isset($_SESSION['error'])) {
+                            echo "<span style='color: red;'>".$_SESSION['error']."</span><br>";
+                            unset($_SESSION['error']);
+                        }
+                    ?>
+                    
+                    <!-- Bouton de connexion -->
+                    <input class="button" type="submit" name="submit" value='Connexion'>
+                    
                 </form>
             </section>
 
             <footer>
-                <h6>Copyright © 2023-2024, Seifeddine Maachaoui. All Rights Reserved.</h6>
+                <h6>
+                    <!-- Texte du droit d'auteur -->
+                    Copyright © 2023-2024, Seifeddine Maachaoui. All Rights Reserved.
+                </h6>
             </footer>
-
         </main>
     </body>
 </html>

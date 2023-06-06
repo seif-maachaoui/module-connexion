@@ -25,54 +25,44 @@
               session_start();
               require_once 'config.php';
 
-              // Vérifier si l'utilisateur est connecté
+              // Je vérifie si l'utilisateur est connecté
               if (!isset($_SESSION['login'])) {
                 header("Location: connexion.php");
                 exit();
               }
               
-              // Vérifier si l'utilisateur est connecté et est l'administrateur
+              // Deuxième vérification, si l'utilisateur est connecté et est l'administrateur
               if (isset($_SESSION['login']) && $_SESSION['login'] === 'admin') {
                 header("Location: admin.php");
                 exit();
               }
 
-              // Récupérer les données utilisateur
+              //Je récupère les informations de l'utilisateur
               $login = $_SESSION['login'];
               $firstname = $_SESSION['firstname'];
               $lastname = $_SESSION['lastname'];
 
               // Traitement du formulaire de modification du profil
               if (isset($_POST['new_login']) && isset($_POST['new_firstname']) && isset($_POST['new_lastname']) && isset($_POST['new_password'])) {
-                // Récupérer les nouvelles données du formulaire
+
+                // Je récupère les nouvelles données du formulaire
                 $new_login = htmlspecialchars(trim($_POST['new_login']));
                 $new_firstname = htmlspecialchars(trim($_POST['new_firstname']));
                 $new_lastname = htmlspecialchars(trim($_POST['new_lastname']));
                 $new_password = htmlspecialchars(trim($_POST['new_password']));
 
-                // Mettre à jour les données utilisateur dans la base de données
+                // La mise à jour des données utilisateur dans la base de données
                 $update = $conn->prepare("UPDATE user SET login = :new_login, firstname = :new_firstname, lastname = :new_lastname, password = :new_password WHERE login = :login");
                 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
                 $update->execute(['new_login' => $new_login, 'new_firstname' => $new_firstname, 'new_lastname' => $new_lastname, 'new_password' => $hashed_password, 'login' => $login]);
 
-                // Mettre à jour les données dans la session
+                // Puis la mise à jour des données dans la session
                 $_SESSION['login'] = $new_login;
                 $_SESSION['firstname'] = $new_firstname;
                 $_SESSION['lastname'] = $new_lastname;
 
-                // Redirection vers la page de profil après la modification
+                // Redirection vers la même page de profil après la modification
                 header("Location: profil.php");
-                exit();
-              }
-
-              // Vérifier si le formulaire de déconnexion a été soumis
-              if (isset($_POST['logout']) && $_POST['logout'] == 'true') {
-                // Détruire toutes les variables de session
-                session_unset();
-                // Détruire la session
-                session_destroy();
-                // Redirection vers la page de connexion après la déconnexion
-                header("Location: index.php");
                 exit();
               }
             ?>

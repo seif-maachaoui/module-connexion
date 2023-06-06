@@ -1,10 +1,10 @@
 <?php
-
     session_start();
     require_once 'config.php';
-    
-    if(isset($_POST['login']) && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['password']) && isset($_POST['check_password'])){
-        //Je protège mes champs contre les injections SQL
+
+    // Je vérifie si les champs du formulaire d'inscription ont été soumis et ont été rempli
+    if (isset($_POST['login']) && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['password']) && isset($_POST['check_password'])) {
+        // Je protège mes champs contre les injections SQL
         $login = htmlspecialchars(trim($_POST['login']));
         $firstname = htmlspecialchars(trim($_POST['firstname']));
         $lastname = htmlspecialchars(trim($_POST['lastname']));
@@ -12,13 +12,13 @@
         $check_password = htmlspecialchars(trim($_POST['check_password']));
     }
 
-    // Vérifier si les identifiants correspondent à l'exception
+    // Je vérifie si les identifiants correspondent à l'exception
     if ($login === 'admin' && $password === 'admin') {
         // Créer l'utilisateur avec les identifiants spécifiques
         $create = $conn->prepare("INSERT INTO user (login, password, firstname, lastname) VALUES (?, ?, ?, ?)");
         $create->execute([$login, $password, $firstname, $lastname]);
 
-        // Rediriger vers la page de connexion
+        // Si c'est le cas, je redirige l'admin vers la page de connexion
         header("Location: connexion.php");
         exit();
     }
@@ -33,7 +33,7 @@
         $errors[] = "Le mot de passe doit comporter au moins 8 caractères, une majuscule, un chiffre et un caractère spécial";
     }
 
-    // Je vérifie si le pseudo de l'utilisateur est unique 
+    // Je vérifie si le pseudo de l'utilisateur est unique
     $insert = $conn->prepare("SELECT COUNT(*) FROM user WHERE login = :login");
     $insert->execute(['login' => $login]);
     if ($insert->fetchColumn()) {
@@ -54,5 +54,4 @@
     // Redirection vers la page de connexion
     header("Location: connexion.php");
     exit();
-
 ?>

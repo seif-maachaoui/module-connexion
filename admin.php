@@ -39,7 +39,7 @@
                     $get->execute();
                     $users = $get->fetchAll();
 
-                    // Afficher les informations des utilisateurs
+                    // Je génère un tableau HTML
                     echo "<h1>Administration</h1>";
                     echo "<table>";
                     echo "<tr>";
@@ -48,7 +48,7 @@
                     echo "<th>Nom</th>";
                     echo "</tr>";
                 
-                    // Afficher les informations des utilisateurs
+                    // J'affiche les informations des utilisateurs au sein de ce tableau
                     $count = 0;
                     foreach ($users as $user) {
                         echo "<tr>";
