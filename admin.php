@@ -16,7 +16,7 @@
                     <ul>
                         <li><a href="index.php">Accueil</a></li>
                         <li><a href="inscription.php">Inscription</a></li>
-                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="deconnexion.php?logout=logout" class="btn-logout">Déconnexion</a></li>
                     </ul>
                 </nav>
             </header>
@@ -41,7 +41,7 @@
 
                     // Afficher les informations des utilisateurs
                     echo "<h1>Administration</h1>";
-                    echo "<table border>";
+                    echo "<table>";
                     echo "<tr>";
                     echo "<th>Pseudo</th>";
                     echo "<th>Prénom</th>";
@@ -64,7 +64,6 @@
                     }
                 
                     echo "</table>";
-                
                 ?>
                 </article>
             </section>

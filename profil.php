@@ -16,7 +16,7 @@
                     <ul>
                         <li><a href="index.php">Accueil</a></li>
                         <li><a href="inscription.php">Inscription</a></li>
-                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="deconnexion.php?logout=logout" class="btn-logout">Déconnexion</a></li>
                     </ul>
                 </nav>
             </header>
@@ -83,28 +83,22 @@
               <!-- Formulaire pour modifier le profil utilisateur -->
               <form method="POST" action="profil.php">
                 <h2>Modifier le profil</h2>
-                <label for="new_login">Nouveau nom d'utilisateur :</label>
+                <label for="new_login">Pseudo :</label>
                 <input type="text" name="new_login" id="new_login" value="<?php echo $login; ?>" required><br>
 
-                <label for="new_firstname">Nouveau prénom :</label>
+                <label for="new_firstname">Prénom :</label>
                 <input type="text" name="new_firstname" id="new_firstname" value="<?php echo $firstname; ?>" required><br>
 
-                <label for="new_lastname">Nouveau nom :</label>
+                <label for="new_lastname">Nom:</label>
                 <input type="text" name="new_lastname" id="new_lastname" value="<?php echo $lastname; ?>" required><br>
 
                 <label for="new_password">Nouveau mot de passe :</label>
                 <input type="password" name="new_password" id="new_password" required><br>
 
-                <input type="submit" value="Modifier">
-                
+                <input type="submit" class="btn-update" value="Modifier">
               </form>
 
-              <!-- Formulaire de déconnexion -->
-              <form method="POST" action="profil.php">
-                <h1>Se déconnecter ?</h1>
-                <input type="hidden" name="logout" value="true">
-                <button type="submit">Déconnexion</button>
-              </form>
+              
             </section>
 
 
